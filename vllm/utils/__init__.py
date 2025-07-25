@@ -1442,19 +1442,27 @@ class FlexibleArgumentParser(ArgumentParser):
             return namespace, args
 
         def add_argument(self, *args, **kwargs):
-            deprecated = kwargs.pop("deprecated", False)
+            try:
+                removed = kwargs.pop("deprecated")
+                print('dropped ', removed)
+            except:
+                pass
             action = super().add_argument(*args, **kwargs)
-            if deprecated:
-                FlexibleArgumentParser._deprecated.add(action)
+            # if deprecated:
+                # FlexibleArgumentParser._deprecated.add(action)
             return action
 
         class _FlexibleArgumentGroup(_ArgumentGroup):
 
             def add_argument(self, *args, **kwargs):
-                deprecated = kwargs.pop("deprecated", False)
+                try:
+                    removed = kwargs.pop("deprecated")
+                    print('dropped ', removed)
+                except:
+                    pass
                 action = super().add_argument(*args, **kwargs)
-                if deprecated:
-                    FlexibleArgumentParser._deprecated.add(action)
+                # if deprecated:
+                    # FlexibleArgumentParser._deprecated.add(action)
                 return action
 
         def add_argument_group(self, *args, **kwargs):

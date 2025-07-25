@@ -601,7 +601,7 @@ class EngineArgs:
             default=None,
             help="The `--qlora-adapter-name-or-path` has no effect, do not set"
             " it, and it  will be removed in v0.10.0.",
-            deprecated=True,
+            # deprecated=True,
         )
         load_group.add_argument('--pt-load-map-location',
                                 **load_kwargs["pt_load_map_location"])
@@ -626,7 +626,7 @@ class EngineArgs:
         guided_decoding_group.add_argument(
             "--enable-reasoning",
             action=argparse.BooleanOptionalAction,
-            deprecated=True,
+            # deprecated=True,
             help="[DEPRECATED] The `--enable-reasoning` flag is deprecated as "
             "of v0.9.0. Use `--reasoning-parser` to specify the reasoning "
             "parser backend instead. This flag (`--enable-reasoning`) will be "
@@ -816,8 +816,8 @@ class EngineArgs:
             description=DeviceConfig.__doc__,
         )
         device_group.add_argument("--device",
-                                  **device_kwargs["device"],
-                                  deprecated=True)
+                                  **device_kwargs["device"])
+                                #   deprecated=True)
 
         # Speculative arguments
         speculative_group = parser.add_argument_group(
@@ -921,7 +921,7 @@ class EngineArgs:
         parser.add_argument('--use-v2-block-manager',
                             action='store_true',
                             default=True,
-                            deprecated=True,
+                            # deprecated=True,
                             help='[DEPRECATED] block manager v1 has been '
                             'removed and SelfAttnBlockSpaceManager (i.e. '
                             'block manager v2) is now the default. '
